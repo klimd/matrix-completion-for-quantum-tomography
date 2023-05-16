@@ -167,7 +167,6 @@ def fista_with_nesterov(x_0, eps=1e-4, L=0.9, max_num_iterations=1000):
     y = x_0.copy()
     t = 1
 
-    # cannot divide by 0, so making this as small as posible
     Z_old = float('inf')
 
     for _ in trange(max_num_iterations):
@@ -219,7 +218,6 @@ def admm(x_0, eps=1e-3, rho=0.05, L=0.9, max_num_iterations=1000):
     z = np.zeros_like(x_0)
     u = np.zeros_like(x_0)
 
-    # cannot divide by 0, so making this as small as posible
     Z_old = float('inf')
 
     for _ in trange(max_num_iterations):
@@ -274,7 +272,7 @@ def svd_k(M, tau, rk, l, rank):
         rk += l
 
 
-def svt(M, eps=1e-4, delta=9e-1, k0=9.23e-1, l=1, rank=200, steps=1000):
+def svt(M, eps=1e-4, delta=9e-1, k0=9.23e-1, l=1, rank=None, steps=1000):
     '''Implementation of the 
     Singular value thresholding (SVT) algorithm (SVTA)
     by Cai, Candes and Shen.
@@ -284,7 +282,8 @@ def svt(M, eps=1e-4, delta=9e-1, k0=9.23e-1, l=1, rank=200, steps=1000):
     '''
     # dims of the qubit space
     dims = M.dims
-    rank = M.shape[0] - 2
+    if not rank:
+        rank = M.shape[0] - 2
     M = np.array(M)
 
     # Create a mask for faster computation
