@@ -1,5 +1,5 @@
 ## Matrix completion for quantum tomography
 
-# Comparison of Different Matrix Completion Algorithms with application in quantum tomography
+### Comparison of Different Matrix Completion Algorithms with application in quantum tomography
 
 Low rank matrix completion methods have seen exciting applications in collaborative filtering, social network recovery, different sensor maps and corrupted data. We explore algorithms beyond the ones covered in lectures: the Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), Alternating Direction Method of Multipliers (ADMM) and Singular Value Thresholding (SVT). We first compare their performance in a domain well-suited for these matrix completion methods - recovering images with noise. Quantum mechanical system have a major problem of recovering their initial density state. We investigate a natural application of low rank matrix completion in quantum computing, where we recover the state of multiple qubits.  Our preliminary results show that the algorithms work much better for pure states, rather than mixed states because of their lower rank. Due to the adaptive shrinkage operator, SVT has potential to be applied to systems of much larger number of qubits. However we found that, on average, SVT takes much longer to converge when compared to FISTA and ADMM, which have same order of magnitude convergences. 
